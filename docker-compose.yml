@@ -46,8 +46,15 @@ services:
   adminer:
     image: adminer
     ports:
+      - "8888:8080"
+  app:
+    build: ./docker/app/
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    volumes:
+      - .:/workspace:cached
+    ports:
       - "8080:8080"
-
+      - "3000:3000"
 
 volumes:
   es-data:
