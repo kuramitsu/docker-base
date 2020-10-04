@@ -46,15 +46,22 @@ services:
   adminer:
     image: adminer
     ports:
-      - "8888:8080"
-  app:
-    build: ./docker/app/
-    command: /bin/sh -c "while sleep 1000; do :; done"
+      - "127.0.0.1:8888:8080"
+  api:
+    build: ./docker/api/
+    tty: true
     volumes:
-      - .:/workspace:cached
+      - ./api:/workspace:cached
     ports:
-      - "8080:8080"
-      - "3000:3000"
+      - "127.0.0.1:8080:8080"
+  app:
+    image: node:12.18.4
+    tty: true
+    volumes:
+      - ./app:/workspace:cached
+    ports:
+      - "127.0.0.1:3000:3000"
+
 
 volumes:
   es-data:
