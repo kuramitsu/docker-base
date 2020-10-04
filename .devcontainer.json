@@ -1,0 +1,8 @@
+{
+  "name": "docker-base application",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "extensions": [],
+  "settings": []
+}

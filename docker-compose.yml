@@ -47,19 +47,13 @@ services:
     image: adminer
     ports:
       - "127.0.0.1:8888:8080"
-  api:
-    build: ./docker/api/
+  app:
+    build: ./docker/app/
     tty: true
     volumes:
-      - ./api:/workspace:cached
+      - .:/workspace:cached
     ports:
       - "127.0.0.1:8080:8080"
-  app:
-    image: node:12.18.4
-    tty: true
-    volumes:
-      - ./app:/workspace:cached
-    ports:
       - "127.0.0.1:3000:3000"
 
 
